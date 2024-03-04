@@ -29,15 +29,12 @@ ax = fig.add_axes((0.1, 0.1, 0.8, 0.8), facecolor="#EEE")
 # ax.spines['left'].set_visible(False)
 
 
-U = np.empty([100, 100])
-V = np.empty([100, 100])
-X, Y = np.meshgrid(np.linspace(lim[0], lim[1], U.shape[1]), np.linspace(lim[2], lim[3], U.shape[0]))
+shape = (100, 100)
+X, Y = np.meshgrid(np.linspace(lim[0], lim[1], shape[1]), np.linspace(lim[2], lim[3], shape[0]))
 
-for i in range(U.shape[0]):
-    for j in range(U.shape[1]):
-        l = np.linalg.norm([X[i, j], Y[i, j]])
-        U[i, j] = -Y[i, j] / l
-        V[i, j] = X[i, j] / l
+l = np.sqrt(X**2 + Y**2)
+U = -Y / l
+V = X / l
 
 mapping[1], maxValue = colorquiver.colorquiver(ax, lim, U, V, colorMode)
 

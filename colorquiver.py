@@ -169,7 +169,6 @@ def colorquiver(
         maxValue = norms.max()
     
     im = _arr_vec_to_color(np.array([-X, Y]), [0, ma], mode)
-    print(f"{im.shape = }")
 
     ax.imshow(im.transpose(1, 2, 0), extent=rect)
     
